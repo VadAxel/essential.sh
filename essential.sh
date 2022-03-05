@@ -84,9 +84,64 @@ then
 			break
 
 		fi
+	else
+		printf "\nThats  not a directory\n"
+		break	
 	fi	
 			
 			
+elif [[ $check = website ]]
+then
+	printf "Enter what to website check:\n"
+	read webname
+	if wget --spider "$webname" 2>/dev/null;
+	then
+		printf "\n$webname exist:\n"
+		printf "\nDo you want to investigate website (y/n)\n"
+		read command_web
+		if [[ $command_web = y ]]
+		then
+			printf "\nnmap:\n\n "
+			nmap $webname 
+			
+			printf "\ncurl:\n\n "
+			curl $webname 
+		else
+			printf "\nWebsite does not exist:\n "
+
+		fi
+	else
+		printf "\nThats  not a website\n"
+	fi	
+			
+			
+			
+elif [[ $check = ip ]]
+then
+	printf "Enter what to ip check:\n"
+	read ip
+	if [[ $ip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]];
+	then
+		printf "\n$ip exist:\n"
+		printf "\nDo you want to investigate ip (y/n)\n"
+		read command_ip
+		if [[ $command_ip = y ]]
+		then
+			printf "\nnmap:\n\n "
+			nmap $ip 
+			
+			printf "\nping:\n\n "
+			ping -c 5 $ip 
+		else
+			printf "\n ip does not exist:\n "
+
+		fi
+	else
+		printf "\nThats  not a ip\n"
+	fi	
+			
+			
+
 
 
 
