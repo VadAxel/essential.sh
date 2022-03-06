@@ -128,7 +128,8 @@ then
 		if [[ $command_ip = y ]]
 		then
 			printf "\nnmap:\n\n "
-			nmap $ip 
+			nmap --osscan-guess $ip 
+			
 			
 			printf "\nping:\n\n "
 			ping -c 5 $ip 
@@ -141,9 +142,6 @@ then
 	fi	
 			
 			
-
-
-
 
 
 
