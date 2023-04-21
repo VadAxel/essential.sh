@@ -1,2 +1,2 @@
 # essential.sh
-jalla testa
+oooooooold things
